@@ -1,0 +1,12 @@
+E:\Code\Tatva Soft\Angular.Data.Access\bin\Debug\netcoreapp2.1\Angular.Data.Access.deps.json
+E:\Code\Tatva Soft\Angular.Data.Access\bin\Debug\netcoreapp2.1\Angular.Data.Access.dll
+E:\Code\Tatva Soft\Angular.Data.Access\bin\Debug\netcoreapp2.1\Angular.Data.Access.pdb
+E:\Code\Tatva Soft\Angular.Data.Access\bin\Debug\netcoreapp2.1\Angular.Data.Models.dll
+E:\Code\Tatva Soft\Angular.Data.Access\bin\Debug\netcoreapp2.1\Angular.Data.Models.pdb
+E:\Code\Tatva Soft\Angular.Data.Access\obj\Debug\netcoreapp2.1\Angular.Data.Access.csprojAssemblyReference.cache
+E:\Code\Tatva Soft\Angular.Data.Access\obj\Debug\netcoreapp2.1\Angular.Data.Access.csproj.CoreCompileInputs.cache
+E:\Code\Tatva Soft\Angular.Data.Access\obj\Debug\netcoreapp2.1\Angular.Data.Access.AssemblyInfoInputs.cache
+E:\Code\Tatva Soft\Angular.Data.Access\obj\Debug\netcoreapp2.1\Angular.Data.Access.AssemblyInfo.cs
+E:\Code\Tatva Soft\Angular.Data.Access\obj\Debug\netcoreapp2.1\Angular.Data.Access.csproj.CopyComplete
+E:\Code\Tatva Soft\Angular.Data.Access\obj\Debug\netcoreapp2.1\Angular.Data.Access.dll
+E:\Code\Tatva Soft\Angular.Data.Access\obj\Debug\netcoreapp2.1\Angular.Data.Access.pdb

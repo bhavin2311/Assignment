@@ -1,0 +1,9 @@
+E:\Code\Tatva Soft\Angular.Data.Models\bin\Debug\netcoreapp2.1\Angular.Data.Models.deps.json
+E:\Code\Tatva Soft\Angular.Data.Models\bin\Debug\netcoreapp2.1\Angular.Data.Models.dll
+E:\Code\Tatva Soft\Angular.Data.Models\bin\Debug\netcoreapp2.1\Angular.Data.Models.pdb
+E:\Code\Tatva Soft\Angular.Data.Models\obj\Debug\netcoreapp2.1\Angular.Data.Models.csprojAssemblyReference.cache
+E:\Code\Tatva Soft\Angular.Data.Models\obj\Debug\netcoreapp2.1\Angular.Data.Models.csproj.CoreCompileInputs.cache
+E:\Code\Tatva Soft\Angular.Data.Models\obj\Debug\netcoreapp2.1\Angular.Data.Models.AssemblyInfoInputs.cache
+E:\Code\Tatva Soft\Angular.Data.Models\obj\Debug\netcoreapp2.1\Angular.Data.Models.AssemblyInfo.cs
+E:\Code\Tatva Soft\Angular.Data.Models\obj\Debug\netcoreapp2.1\Angular.Data.Models.dll
+E:\Code\Tatva Soft\Angular.Data.Models\obj\Debug\netcoreapp2.1\Angular.Data.Models.pdb
