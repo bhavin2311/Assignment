@@ -1,5 +1,10 @@
-<div class="col-sm-3">
-  <app-nav-menu></app-nav-menu>
-</div>
-
-<router-outlet></router-outlet>
+<app-header></app-header>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened class="mat-drawer">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-footer></app-footer>

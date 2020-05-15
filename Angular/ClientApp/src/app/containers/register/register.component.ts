@@ -1,4 +1,3 @@
-import { User } from "./../../models/user";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -9,9 +8,5 @@ import { Component, OnInit } from "@angular/core";
 export class RegisterComponent implements OnInit {
   constructor() {}
 
-  model = new User();
-  login() {
-    console.log(this.model);
-  }
   ngOnInit(): void {}
 }

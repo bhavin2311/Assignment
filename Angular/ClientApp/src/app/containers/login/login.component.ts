@@ -1,4 +1,3 @@
-import { User } from "./../../models/user";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -9,10 +8,7 @@ import { Component, OnInit } from "@angular/core";
 export class LoginComponent implements OnInit {
   constructor() {}
 
-  model = new User();
-  login() {
-    console.log(this.model);
-  }
+  login() {}
 
   ngOnInit(): void {}
 }
