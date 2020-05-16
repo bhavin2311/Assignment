@@ -4,3 +4,6 @@
 .mat-drawer {
   width: 350px;
 }
+.mat-drawer-content {
+  padding: 20px;
+}

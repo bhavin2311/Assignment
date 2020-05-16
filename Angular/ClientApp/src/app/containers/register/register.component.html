@@ -1,1 +1,93 @@
-Register Works
+<div class="col-md-6 col-md-offset-3">
+  <h2>Registration</h2>
+  <form
+    name="form"
+    #loginForm="ngForm"
+    (ngSubmit)="loginForm.form.valid && register()"
+  >
+    <mat-form-field class="example-full-width">
+      <mat-label>Username</mat-label>
+      <input
+        type="text"
+        [(ngModel)]="model.username"
+        name="username"
+        #username="ngModel"
+        matInput
+        required
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label>Firstname</mat-label>
+      <input
+        type="text"
+        [(ngModel)]="model.firstname"
+        name="firstname"
+        #firstname="ngModel"
+        required
+        matInput
+      />
+    </mat-form-field>
+    <br />
+    <!-- appearance="none" -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Lastname</mat-label>
+      <input
+        type="text"
+        [(ngModel)]="model.lastname"
+        name="lastname"
+        #lastname="ngModel"
+        required
+        matInput
+      />
+    </mat-form-field>
+
+    <br />
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        type="text"
+        [(ngModel)]="model.password"
+        class="form-control"
+        name="password"
+        #password="ngModel"
+        required
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <!-- <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        [(ngModel)]="model.password"
+        class="form-control"
+        name="password"
+        #password="ngModel"
+        required
+        matInput
+      />
+    </mat-form-field> -->
+    <br />
+
+    <div class="form-group">
+      <button
+        type="submit"
+        mat-stroked-button
+        color="primary"
+        mat-raised-button
+      >
+        Register
+      </button>
+    </div>
+  </form>
+</div>

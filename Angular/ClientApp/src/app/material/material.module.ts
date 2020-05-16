@@ -1,11 +1,6 @@
-import { SharedModule } from "./shared/shared.module";
-import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
-import { AppRoutingModule, routingComponets } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { FormsModule } from "@angular/forms";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CommonModule } from "@angular/common";
+
 import { A11yModule } from "@angular/cdk/a11y";
 import { ClipboardModule } from "@angular/cdk/clipboard";
 import { DragDropModule } from "@angular/cdk/drag-drop";
@@ -49,17 +44,10 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { CommonModule } from "@angular/common";
 
 @NgModule({
-  declarations: [AppComponent, routingComponets],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    SharedModule,
+  declarations: [],
+  exports: [
     CommonModule,
     A11yModule,
     ClipboardModule,
@@ -106,7 +94,5 @@ import { CommonModule } from "@angular/common";
     ScrollingModule,
     FlexLayoutModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class MaterialModule {}

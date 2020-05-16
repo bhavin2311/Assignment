@@ -30,7 +30,6 @@ namespace Angular.RestAPI
             _securityContext = securityContext;
         }
         
-        
         [HttpPost("[action]")]
         public async Task<string> Register([FromForm] RegisterModel model)
         {
@@ -39,12 +38,11 @@ namespace Angular.RestAPI
             if (_uow.Query<User>().Any(u => u.UserName == username))
             {
                 throw new NotFoundException("User Not Found");
-
             }
             var user = new User
             {
                 UserName = model.UserName.Trim(),
-                PassWord = model.PassWord.Trim(),
+                PassWord = model.PassWord.Trim().WithBCrypt(),
                 FirstName = model.FirstName.Trim(),
                 LastName = model.LastName.Trim(),
             };
@@ -59,7 +57,8 @@ namespace Angular.RestAPI
         {
 
             var user = (from u in _uow.Query<User>()
-                        where u.UserName == model.Username && !u.IsDeleted
+                        where u.UserName == model.Username && !u.IsDeleted && u.PassWord.VerifyWithBCrypt
+                        (model.Password)
                         select u).FirstOrDefault();
             if (user == null)
             {
