@@ -1,3 +1,4 @@
+import { ExpenseComponent } from "./containers/expense/expense.component";
 import { RegisterComponent } from "./containers/register/register.component";
 import { LoginComponent } from "./containers/login/login.component";
 import { UserFormComponent } from "./components/user-form/user-form.component";
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "register",
     component: RegisterComponent,
+  },
+  {
+    path: "expense",
+    component: ExpenseComponent,
   },
 ];
 

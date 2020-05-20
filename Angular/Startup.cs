@@ -33,6 +33,7 @@ namespace Angular
             var connectionString = Configuration["Data:main"];
             services.AddScoped<IUnitOfWork>(ctx => new EFUnitOfWork(ctx.GetRequiredService<MainDbContext>()));
             services.AddScoped<ITransaction,DbTransaction>();
+
             //Security
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -88,6 +89,16 @@ namespace Angular
             }
             else
             {
+                app.UseMvc(routes =>
+                {
+                    routes.MapRoute(
+                        "default",
+                        "{controller=Home}/{action=Index}/{id?}");
+
+                    routes.MapSpaFallbackRoute(
+                        "spa-fallback",
+                        new { controller = "Home", action = "Index" });
+                });
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }

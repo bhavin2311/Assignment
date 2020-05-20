@@ -50,9 +50,15 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CommonModule } from "@angular/common";
-
+import { AuthService } from "./Security/auth.service";
+import { ExpenseComponent } from "./containers/expense/expense.component";
+import {
+  GridModule,
+  PDFModule,
+  ExcelModule,
+} from "@progress/kendo-angular-grid";
 @NgModule({
-  declarations: [AppComponent, routingComponets],
+  declarations: [AppComponent, routingComponets, ExpenseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -105,8 +111,11 @@ import { CommonModule } from "@angular/common";
     PortalModule,
     ScrollingModule,
     FlexLayoutModule,
+    GridModule,
+    PDFModule,
+    ExcelModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

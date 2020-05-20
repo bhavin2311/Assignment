@@ -17,6 +17,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace Angular.RestAPI
 {
     [Route("api/[controller]")]
+    [ApiController]
+
     public class AccountController : Controller
     {
         private readonly ISecurityContext _securityContext;
@@ -31,7 +33,7 @@ namespace Angular.RestAPI
         }
         
         [HttpPost("[action]")]
-        public async Task<string> Register([FromForm] RegisterModel model)
+        public async Task<string> Register([FromBody] RegisterModel model)
         {
             var username = model.UserName.Trim();
 
@@ -53,13 +55,13 @@ namespace Angular.RestAPI
         }
 
         [HttpPost("[action]")]
-        public UserWithTokenModel Login([FromForm] LoginModel model)
+        public UserWithTokenModel Login([FromBody] LoginModel model)
         {
 
             var user = (from u in _uow.Query<User>()
-                        where u.UserName == model.Username && !u.IsDeleted && u.PassWord.VerifyWithBCrypt
-                        (model.Password)
-                        select u).FirstOrDefault();
+                        where u.UserName == model.username && u.PassWord == model.password
+                        select u).Include(x => x.Roles).ThenInclude(x => x.Role).FirstOrDefault();
+
             if (user == null)
             {
                 return null;
@@ -67,7 +69,7 @@ namespace Angular.RestAPI
 
             var expiresIn = DateTime.Now + TokenAuthOption.ExpiresSpan;
 
-            var token = _tokenBuilder.Build(model.Username, expiresIn);
+            var token = _tokenBuilder.Build(model.username, expiresIn);
 
             return new UserWithTokenModel
             {

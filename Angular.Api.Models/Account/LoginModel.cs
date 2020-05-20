@@ -8,8 +8,8 @@ namespace Angular.Api.Models.Account
    public  class LoginModel
     {
         [Required]
-        public string Username { get; set; }
+        public string username { get; set; }
         [Required]
-        public string Password { get; set; }
+        public string password { get; set; }
     }
 }
