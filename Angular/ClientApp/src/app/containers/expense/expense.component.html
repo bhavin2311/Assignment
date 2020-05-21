@@ -1,6 +1,6 @@
 <p>Expenses Work</p>
 <kendo-grid
-  [kendoGridBinding]="gridView"
+  [kendoGridBinding]="gridData"
   kendoGridSelectBy="id"
   [selectedKeys]="mySelection"
   [pageSize]="20"
@@ -41,17 +41,17 @@
     showSelectAll="true"
   ></kendo-grid-checkbox-column>
   <kendo-grid-column-group title="Employee" [columnMenu]="false">
-    <kendo-grid-column field="full_name" title="Contact Name" [width]="220">
+    <kendo-grid-column field="name" title="Contact Name" [width]="220">
       <ng-template kendoGridCellTemplate let-dataItem>
         <!-- <div
           class="customer-photo"
           [ngStyle]="{ 'background-image': photoURL(dataItem) }"
         ></div> -->
-        <div class="customer-name">{{ dataItem.full_name }}</div>
+        <div class="customer-name">{{ dataItem.name }}</div>
       </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="job_title" title="Job Title" [width]="220">
-    </kendo-grid-column>
+    <!-- <kendo-grid-column field="job_title" title="Job Title" [width]="220">
+    </kendo-grid-column> -->
     <kendo-grid-column
       field="country"
       title="Country"
@@ -82,13 +82,13 @@
     </kendo-grid-column>
   </kendo-grid-column-group>
 
-  <kendo-grid-column-group title="Contacts" [columnMenu]="false">
+  <!-- <kendo-grid-column-group title="Contacts" [columnMenu]="false">
     <kendo-grid-column field="phone" title="Phone" [width]="130">
     </kendo-grid-column>
     <kendo-grid-column field="address" title="Address" [width]="200">
     </kendo-grid-column>
-  </kendo-grid-column-group>
-  <kendo-grid-command-column title="command" width="220">
+  </kendo-grid-column-group> -->
+  <!-- <kendo-grid-command-column title="command" width="220">
     <ng-template kendoGridCellTemplate let-dataItem>
       <button
         kendoGridEditCommand
@@ -106,5 +106,5 @@
     fileName="Employees.pdf"
     [repeatHeaders]="true"
   ></kendo-grid-pdf>
-  <kendo-grid-excel fileName="Employees.xlsx"></kendo-grid-excel>
+  <kendo-grid-excel fileName="Employees.xlsx"></kendo-grid-excel> -->
 </kendo-grid>

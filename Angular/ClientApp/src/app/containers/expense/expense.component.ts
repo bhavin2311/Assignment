@@ -1,3 +1,5 @@
+import { profile } from "./profile";
+import { AuthService } from "src/app/Security/auth.service";
 import { Routes, Router } from "@angular/router";
 import { DataBindingDirective } from "@progress/kendo-angular-grid";
 import { Component, OnInit, ViewChild } from "@angular/core";
@@ -10,17 +12,26 @@ import { images } from "./image";
   styleUrls: ["./expense.component.css"],
 })
 export class ExpenseComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private service: AuthService) {}
 
   @ViewChild(DataBindingDirective) dataBinding: DataBindingDirective;
 
-  public gridData: any[] = employees;
+  public gridData: profile[];
   public gridView: any[];
   public mySelection: string[] = [];
 
   ngOnInit(): void {
-    this.gridView = this.gridData;
+    this.service.getProfile().subscribe(
+      (data: profile[]) => {
+        this.gridData = data;
+        console.log(this.gridData);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
+
   public onFilter(inputValue: string): void {
     this.gridView = process(this.gridData, {
       filter: {

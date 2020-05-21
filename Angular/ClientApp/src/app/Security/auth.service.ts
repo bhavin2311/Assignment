@@ -1,3 +1,4 @@
+import { profile } from "./../containers/expense/profile";
 import { Observable } from "rxjs";
 import { IUserWithToken } from "./../Models/IUserWithToken";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -20,6 +21,12 @@ export class AuthService {
     // this.header = new HttpHeaders({
     //   "Content-Type": "application/json; charset=utf-8",
     // });
+  }
+
+  getProfile(): Observable<profile[]> {
+    return this.http.get<profile[]>(
+      "https://jsonplaceholder.typicode.com/comments"
+    );
   }
 
   login(username: string, password: string) {

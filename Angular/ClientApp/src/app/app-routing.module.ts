@@ -24,7 +24,7 @@ const routes: Routes = [
   {
     path: "expense",
     component: ExpenseComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: "changepassword",
