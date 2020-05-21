@@ -1,3 +1,4 @@
+import { Routes, Router } from "@angular/router";
 import { DataBindingDirective } from "@progress/kendo-angular-grid";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { employees } from "./exmplyoee";
@@ -9,7 +10,7 @@ import { images } from "./image";
   styleUrls: ["./expense.component.css"],
 })
 export class ExpenseComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   @ViewChild(DataBindingDirective) dataBinding: DataBindingDirective;
 
@@ -67,5 +68,15 @@ export class ExpenseComponent implements OnInit {
     const image: any = images;
 
     return image[code];
+  }
+
+  editHandler(data: any) {
+    console.log(data);
+
+    // this.router.navigate(["expense", data.id, "edit"]);
+  }
+  removeHandler(data: any) {
+    console.log(data.id);
+    //Delete Item Form List
   }
 }

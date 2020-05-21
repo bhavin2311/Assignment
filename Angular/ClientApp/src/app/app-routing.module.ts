@@ -1,3 +1,6 @@
+import { ChangepasswordComponent } from "./containers/changepassword/changepassword.component";
+import { AuthGuard } from "./Security/auth.guard";
+import { YogeshComponent } from "./test/yogesh/yogesh.component";
 import { ExpenseComponent } from "./containers/expense/expense.component";
 import { RegisterComponent } from "./containers/register/register.component";
 import { LoginComponent } from "./containers/login/login.component";
@@ -21,6 +24,12 @@ const routes: Routes = [
   {
     path: "expense",
     component: ExpenseComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "changepassword",
+    component: ChangepasswordComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

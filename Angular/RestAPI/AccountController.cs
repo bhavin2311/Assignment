@@ -82,7 +82,7 @@ namespace Angular.RestAPI
 
         [HttpPost("[action]")]
         [Authorize]
-        public async Task ChangePassword([FromForm] ChangeUserPasswordModel changePasswordModel)
+        public async Task ChangePassword([FromBody] ChangeUserPasswordModel changePasswordModel)
         {
             var user = _uow.Query<User>().Where(x => !x.IsDeleted).FirstOrDefault(u => u.Id == _securityContext.user.Id);
 

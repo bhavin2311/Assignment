@@ -1,3 +1,4 @@
+import { AuthGuard } from "./Security/auth.guard";
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -57,8 +58,19 @@ import {
   PDFModule,
   ExcelModule,
 } from "@progress/kendo-angular-grid";
+import { MainNavComponent } from "./test/main-nav/main-nav.component";
+import { LayoutModule } from "@angular/cdk/layout";
+import { YogeshComponent } from "./test/yogesh/yogesh.component";
+import { ChangepasswordComponent } from './containers/changepassword/changepassword.component';
 @NgModule({
-  declarations: [AppComponent, routingComponets, ExpenseComponent],
+  declarations: [
+    AppComponent,
+    routingComponets,
+    ExpenseComponent,
+    MainNavComponent,
+    YogeshComponent,
+    ChangepasswordComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -114,8 +126,9 @@ import {
     GridModule,
     PDFModule,
     ExcelModule,
+    LayoutModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
