@@ -1,5 +1,5 @@
 import { Router } from "@angular/router";
-import { AuthService } from "src/app/Security/auth.service";
+import { AuthService } from "./../../Services/auth.service";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { Observable } from "rxjs";

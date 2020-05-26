@@ -30,11 +30,14 @@
         />
       </div>
       <h2 matSubheader>Menu</h2>
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/"
-        >DashBoard</a
+      <a
+        mat-list-item
+        routerLinkActive="list-item-active"
+        routerLink="/changepassword"
+        >ChangePassword</a
       >
-      <a mat-list-item routerLinkActive="list-item-active" routerLink="/"
-        >DashBoard</a
+      <a mat-list-item routerLinkActive="list-item-active" (click)="logout()"
+        >Logout</a
       >
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/"
         >DashBoard</a
@@ -59,25 +62,35 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ClientApp</span>
+      <span>Angular</span>
       <span class="spacer"></span>
-      <div [ngClass]="{ hidden: isHandset$ | async }">
-        <a href="#"><mat-icon>settings</mat-icon></a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-      </div>
       <div *ngIf="userIsLogged" [ngClass]="{ hidden: isHandset$ | async }">
+        <!-- <a href="#"><mat-icon>settings</mat-icon></a> -->
+        <span id="userInfo">{{ user.firstName }} {{ user.lastName }}</span>
+        <a [matMenuTriggerFor]="belowMenu"><mat-icon>settings</mat-icon></a>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+          <button mat-menu-item [routerLink]="['changepassword']">
+            ChangePassword
+          </button>
+          <button mat-menu-item (click)="logout()">
+            Logout
+          </button>
+        </mat-menu>
+
+        <br />
+      </div>
+      <!-- <div *ngIf="userIsLogged" [ngClass]="{ hidden: isHandset$ | async }">
         <h4>
           <span id="userInfo">{{ user.firstName }} {{ user.lastName }}</span>
           <a id="logoutLink" (click)="logout()">(Log out)</a> <br />
           <a
             id="changePassword"
             [routerLink]="['changepassword']"
-            class="btn btn-link"
+            mat-raised-button
             >Change password</a
           >
         </h4>
-      </div>
+      </div> -->
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

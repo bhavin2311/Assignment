@@ -1,5 +1,5 @@
 import { profile } from "./profile";
-import { AuthService } from "src/app/Security/auth.service";
+import { AuthService } from "src/app/Services/auth.service";
 import { Routes, Router } from "@angular/router";
 import { DataBindingDirective } from "@progress/kendo-angular-grid";
 import { Component, OnInit, ViewChild } from "@angular/core";

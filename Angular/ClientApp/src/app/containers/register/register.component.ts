@@ -1,7 +1,7 @@
+import { AlertService } from "./../alert/alert.service";
 import { IUser } from "./../../Models/IUser";
 import { Router } from "@angular/router";
-import { AuthService } from "src/app/Security/auth.service";
-import { HttpClient } from "@angular/common/http";
+import { AuthService } from "src/app/Services/auth.service";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -10,7 +10,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./register.component.css"],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private alert: AlertService
+  ) {}
 
   model: any = {};
   loading = false;
@@ -21,13 +25,13 @@ export class RegisterComponent implements OnInit {
     console.log(JSON.stringify(this.model));
     this.authService.register(<IUser>this.model).subscribe(
       (data) => {
-        // set success message and pass true paramater to persist the message after redirecting to the login page
-        //  this.alertService.success("Registration successful", true);
+        this.alert.success("Register Succesfully !!");
         this.router.navigate(["/login"]);
       },
       (error) => {
-        // this.alertService.error(error);
         this.loading = false;
+        console.log(error);
+        this.alert.error(error.error);
       }
     );
   }

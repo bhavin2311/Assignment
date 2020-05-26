@@ -1,10 +1,15 @@
-import { profile } from "./../containers/expense/profile";
 import { Observable } from "rxjs";
-import { IUserWithToken } from "./../Models/IUserWithToken";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { IUserWithToken } from "../Models/IUserWithToken";
+import { profile } from "./../containers/expense/profile";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from "@angular/common/http";
 import { IUser } from "../Models/Iuser";
 import { Injectable, EventEmitter } from "@angular/core";
-import { map } from "rxjs/operators";
+import { map, tap, catchError } from "rxjs/operators";
+import { throwError } from "rxjs";
 @Injectable({
   providedIn: "root",
 })
@@ -48,25 +53,30 @@ export class AuthService {
         map((res: IUserWithToken) => {
           // console.log(res);
           this.loginInternal(res);
-        })
+        }),
+        catchError(this.handleError)
       );
   }
 
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
+  }
   register(user: IUser): Observable<IUser> {
-    return this.http.post<IUser>(
-      "https://localhost:44335/api/Account/register",
-      JSON.stringify(user),
-      {
-        headers: this.header.append(
-          "Content-Type",
-          "application/json; charset=utf-8"
-        ),
-      }
-    );
+    return this.http
+      .post<IUser>(
+        "https://localhost:44335/api/Account/register",
+        JSON.stringify(user),
+        {
+          headers: this.header.append(
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ),
+        }
+      )
+      .pipe(catchError(this.handleError));
   }
   private loginInternal(data: IUserWithToken) {
     this.token = data.token;
-    debugger;
     this.user = data.user;
     console.log(this.token);
     sessionStorage.setItem(this.storageKey, JSON.stringify(data));

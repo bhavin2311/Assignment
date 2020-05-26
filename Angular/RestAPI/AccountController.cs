@@ -33,13 +33,13 @@ namespace Angular.RestAPI
         }
         
         [HttpPost("[action]")]
-        public async Task<string> Register([FromBody] RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
             var username = model.UserName.Trim();
 
             if (_uow.Query<User>().Any(u => u.UserName == username))
             {
-                throw new NotFoundException("User Not Found");
+                throw new NotFoundException("This Username is already taken please try other !!");
             }
             var user = new User
             {
@@ -51,11 +51,11 @@ namespace Angular.RestAPI
 
             _uow.Add(user);
             await _uow.CommitAsync();
-            return "Added";
+            return Ok(model);
         }
 
         [HttpPost("[action]")]
-        public UserWithTokenModel Login([FromBody] LoginModel model)
+        public IActionResult Login([FromBody] LoginModel model)
         {
 
             var user = (from u in _uow.Query<User>()
@@ -64,19 +64,19 @@ namespace Angular.RestAPI
 
             if (user == null)
             {
-                return null;
+                return StatusCode((int)System.Net.HttpStatusCode.Unauthorized, "Username or Password incorrect !!!");    
             }
 
             var expiresIn = DateTime.Now + TokenAuthOption.ExpiresSpan;
 
             var token = _tokenBuilder.Build(model.username, expiresIn);
 
-            return new UserWithTokenModel
+            return Ok(new UserWithTokenModel
             {
                 Token = token,
                 ExpiresAt = expiresIn,
                 User = user
-            };
+            });
 
         }
 

@@ -1,4 +1,5 @@
-import { AuthGuard } from "./Security/auth.guard";
+import { AlertComponent } from "./containers/alert/alert.component";
+import { AuthGuard } from "./Services/auth.guard";
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -51,7 +52,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CommonModule } from "@angular/common";
-import { AuthService } from "./Security/auth.service";
+import { AuthService } from "./Services/auth.service";
 import { ExpenseComponent } from "./containers/expense/expense.component";
 import {
   GridModule,
@@ -60,16 +61,16 @@ import {
 } from "@progress/kendo-angular-grid";
 import { MainNavComponent } from "./test/main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
-import { YogeshComponent } from "./test/yogesh/yogesh.component";
-import { ChangepasswordComponent } from './containers/changepassword/changepassword.component';
+
+import { ChangepasswordComponent } from "./containers/changepassword/changepassword.component";
 @NgModule({
   declarations: [
     AppComponent,
     routingComponets,
     ExpenseComponent,
     MainNavComponent,
-    YogeshComponent,
     ChangepasswordComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

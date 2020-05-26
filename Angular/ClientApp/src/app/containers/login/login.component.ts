@@ -1,8 +1,9 @@
+import { AlertService } from "./../../containers/alert/alert.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { IUser } from "../../Models/IUser";
 import { Component, OnInit } from "@angular/core";
 
-import { AuthService } from "src/app/Security/auth.service";
+import { AuthService } from "src/app/Services/auth.service";
 import { map } from "rxjs/operators";
 
 @Component({
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private alert: AlertService
   ) {}
 
   hide = true;
@@ -25,14 +27,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
+    console.log(this.model);
+
     this.authService.login(this.model.username, this.model.password).subscribe(
       (data) => {
-        console.log("Logged in success!!");
-
         this.router.navigate([this.returnUrl]);
+        this.alert.success("Login Successfully!!");
       },
       (error) => {
-        console.error(error._body);
+        console.error(error.error);
+        this.alert.error(error.error);
 
         this.loading = false;
       }

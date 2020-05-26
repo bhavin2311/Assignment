@@ -2,3 +2,13 @@
   width: 15px;
   height: 15px;
 }
+
+.has-error {
+  border-color: red;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+}
